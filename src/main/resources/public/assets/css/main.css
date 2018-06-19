@@ -1,0 +1,25 @@
+
+input, select {
+	display: inline;
+}
+
+.prices, .cart {
+	border: 1px solid #ddd;
+	display: block;
+	margin-right: 10%;
+	padding: 1rem;
+	width: 45%;
+	float: right;
+}
+
+th {
+	text-align: center;
+}
+
+.cart {
+	margin-top: 2rem;
+}
+
+.form {
+	width: 49%;
+}

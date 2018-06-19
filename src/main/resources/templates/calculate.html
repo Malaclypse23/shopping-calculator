@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Shopping Calculator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css" th:href="@{/assets/css/main.css}" />
+
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="starter-template">
+			<h1>Shopping Calculator</h1>
+			
+			<form class="form" action="#" th:action="@{/}" th:object="${order}" method="post">
+	            <table>
+	                <tr>
+	                    <td>Quantity:</td>
+	                    <td><input type="number" th:field="*{quantity}" /></td>
+	                </tr>
+	                <tr>
+	                    <td>Item:</td>
+	                    <td>
+	                    	<select th:field="*{item.name}">
+	                         	<option value=""> -- </option>
+	                         	<option th:each="item : ${items}"
+	                            		th:value="${item.name}"
+	                            		th:utext="${item.name + ' - ' + item.unitPrice}"/>
+	                  		</select>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td><button type="submit">Add to Basket</button></td>
+	                </tr>
+	            </table>
+        	</form>
+			
+			<table class="prices">
+				<tr>
+					<th>Prices</th>
+				</tr>
+	            <tr>
+	                <th>Name</th>
+	                <th>Unit Price</th>
+	                <th>Special Price</th>
+	            </tr>
+	            <tr th:each="item : ${items}">
+	                <td th:text="${item.name}"></td>
+	                <td th:text="${item.unitPrice}"></td>
+	                <td th:text="${item.specialPrice}"></td>
+	            </tr>
+	        </table>
+	        	
+	        <table class="cart">
+	        	<caption>Shopping Cart</caption>
+	        	<thead>
+	        		<tr>
+	                	<th>Quantity</th>
+	                	<th>Name</th>
+	                	<th>Cost</th>
+	            	</tr>
+	        	</thead>
+	            <tbody>
+		            <tr th:each="b : ${basket}">
+		                <td th:text="${b.quantity}"></td>
+		                <td th:text="${b.item.name}"></td>
+		                <td th:text="${b.totalCost}"></td>
+		            </tr>
+	            </tbody>
+	            <tfoot>
+		            <tr>
+		            	<td>total cost</td>
+		            	<td th:with="totalCost=${totalCost}"></td>
+		            </tr>
+		        </tfoot>
+        	</table>
+		</div>
+
+	</div>
+
+</body>
+</html>
