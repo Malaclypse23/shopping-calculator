@@ -72,12 +72,16 @@
 	            <tfoot>
 		            <tr>
 		            	<td>total cost</td>
-		            	<td th:with="totalCost=${totalCost}"></td>
+		            	
 		            </tr>
 		        </tfoot>
         	</table>
 		</div>
 
+	</div>
+	
+	<div class="result">
+		Total cost: <div th:field="*{totalCost}"></div>
 	</div>
 
 </body>

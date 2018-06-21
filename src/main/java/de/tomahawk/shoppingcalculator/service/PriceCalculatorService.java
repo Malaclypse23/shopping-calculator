@@ -53,7 +53,7 @@ public class PriceCalculatorService {
 		return order.getItem().getUnitPrice() * order.getQuantity();
 	}
 	
-	private Long calculateCost(int desired, long unitPrice, int specialQuantity, long specialPrice) {
+	public Long calculateCost(int desired, long unitPrice, int specialQuantity, long specialPrice) {
 		Long result = 0L;
 
 		while (desired > 0) {
@@ -68,7 +68,7 @@ public class PriceCalculatorService {
 	}
 	
 	private Boolean isSpecialPrice(int desired, int quantity) {
-		if (desired >= quantity) {
+		if (desired >= quantity && quantity > 0) {
 			return true;
 		}
 		return false;
@@ -95,7 +95,6 @@ public class PriceCalculatorService {
 			if (o.getItem().getName().equals(order.getItem().getName())) {
 				int oldCount = o.getQuantity();
 				o.setQuantity(oldCount + order.getQuantity());
-//				o.setTotalCost(calculateTotalCosts(o));
 				return;
 			}
 		}

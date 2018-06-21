@@ -3,7 +3,7 @@ input, select {
 	display: inline;
 }
 
-.prices, .cart {
+.prices, .cart, .result {
 	border: 1px solid #ddd;
 	display: block;
 	margin-right: 10%;
@@ -16,7 +16,7 @@ th {
 	text-align: center;
 }
 
-.cart {
+.cart, .result {
 	margin-top: 2rem;
 }
 
