@@ -3,7 +3,7 @@ package de.tomahawk.shoppingcalculator.model;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-public class Item {
+public class Item implements Cloneable {
 
 	@NotNull
 	private String name;
@@ -47,5 +47,13 @@ public class Item {
 	public void setSpecialPrice(SpecialPrice specialPrice) {
 		this.specialPrice = specialPrice;
 	}
+	
+	public Object clone() throws CloneNotSupportedException {
+		Object obj = super.clone();
+		Item i = (Item) obj;
+		i.setName("A");
+		i.setUnitPrice(50L);
+		return i;
+    }
 	
 }
